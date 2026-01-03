@@ -1,0 +1,2088 @@
+[
+  {
+    "query_id": 1,
+    "concerns": [
+      "skin_texture",
+      "scar_healing",
+      "acne_fighting"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 2,
+    "concerns": [
+      "hydrating",
+      "skin_texture",
+      "anti_aging"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 3,
+    "concerns": [
+      "scar_healing",
+      "skin_texture"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 4,
+    "concerns": [
+      "acne_fighting",
+      "brightening"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 5,
+    "concerns": [
+      "brightening",
+      "acne_fighting"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 6,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 7,
+    "concerns": [
+      "brightening",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 8,
+    "concerns": [
+      "scar_healing",
+      "anti_aging",
+      "dark_spots"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 9,
+    "concerns": [
+      "anti_aging",
+      "brightening"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 10,
+    "concerns": [
+      "dark_spots",
+      "anti_aging",
+      "reduces_large_pores"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 11,
+    "concerns": [
+      "good_for_oily_skin"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 12,
+    "concerns": [
+      "reduces_irritation",
+      "scar_healing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 13,
+    "concerns": [
+      "reduces_large_pores",
+      "brightening",
+      "scar_healing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 14,
+    "concerns": [
+      "good_for_oily_skin"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 15,
+    "concerns": [
+      "good_for_oily_skin",
+      "brightening",
+      "hydrating"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 16,
+    "concerns": [
+      "scar_healing",
+      "reduces_irritation"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 17,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 18,
+    "concerns": [
+      "reduces_irritation",
+      "dark_spots"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 19,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 20,
+    "concerns": [
+      "acne_fighting",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 21,
+    "concerns": [
+      "scar_healing",
+      "dark_spots"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 22,
+    "concerns": [
+      "anti_aging"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 23,
+    "concerns": [
+      "acne_fighting",
+      "scar_healing",
+      "dark_spots"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 24,
+    "concerns": [
+      "skin_texture",
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 25,
+    "concerns": [
+      "brightening",
+      "anti_aging"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 26,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 27,
+    "concerns": [
+      "reduces_irritation"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 28,
+    "concerns": [
+      "acne_fighting",
+      "reduces_irritation",
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 29,
+    "concerns": [
+      "reduces_large_pores",
+      "skin_texture"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 30,
+    "concerns": [
+      "brightening",
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 31,
+    "concerns": [
+      "scar_healing",
+      "brightening",
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 32,
+    "concerns": [
+      "scar_healing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 33,
+    "concerns": [
+      "reduces_irritation"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 34,
+    "concerns": [
+      "brightening",
+      "dark_spots"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 35,
+    "concerns": [
+      "redness_reducing",
+      "skin_texture"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 36,
+    "concerns": [
+      "dark_spots",
+      "reduces_irritation",
+      "anti_aging"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 37,
+    "concerns": [
+      "anti_aging"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 38,
+    "concerns": [
+      "acne_fighting",
+      "anti_aging"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 39,
+    "concerns": [
+      "reduces_irritation",
+      "scar_healing"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 40,
+    "concerns": [
+      "good_for_oily_skin"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 41,
+    "concerns": [
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 42,
+    "concerns": [
+      "dark_spots",
+      "redness_reducing",
+      "skin_texture"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 43,
+    "concerns": [
+      "reduces_irritation",
+      "anti_aging",
+      "dark_spots"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 44,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 45,
+    "concerns": [
+      "good_for_oily_skin",
+      "dark_spots",
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 46,
+    "concerns": [
+      "acne_fighting"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 47,
+    "concerns": [
+      "good_for_oily_skin",
+      "reduces_large_pores"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 48,
+    "concerns": [
+      "anti_aging",
+      "hydrating",
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 49,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 50,
+    "concerns": [
+      "reduces_irritation",
+      "dark_spots"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 51,
+    "concerns": [
+      "skin_texture",
+      "reduces_large_pores",
+      "scar_healing"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 52,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 53,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 54,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 55,
+    "concerns": [
+      "acne_fighting"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 56,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 57,
+    "concerns": [
+      "hydrating",
+      "brightening"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 58,
+    "concerns": [
+      "dark_spots"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 59,
+    "concerns": [
+      "reduces_irritation"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 60,
+    "concerns": [
+      "anti_aging",
+      "skin_texture"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 61,
+    "concerns": [
+      "good_for_oily_skin",
+      "acne_fighting",
+      "reduces_irritation"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 62,
+    "concerns": [
+      "skin_texture",
+      "anti_aging",
+      "reduces_irritation"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 63,
+    "concerns": [
+      "redness_reducing"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 64,
+    "concerns": [
+      "good_for_oily_skin",
+      "scar_healing"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 65,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 66,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 67,
+    "concerns": [
+      "redness_reducing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 68,
+    "concerns": [
+      "reduces_large_pores",
+      "scar_healing",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 69,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 70,
+    "concerns": [
+      "reduces_irritation"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 71,
+    "concerns": [
+      "redness_reducing",
+      "dark_spots",
+      "scar_healing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 72,
+    "concerns": [
+      "scar_healing",
+      "skin_texture",
+      "hydrating"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 73,
+    "concerns": [
+      "good_for_oily_skin",
+      "reduces_large_pores",
+      "skin_texture"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 74,
+    "concerns": [
+      "dark_spots",
+      "anti_aging",
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 75,
+    "concerns": [
+      "reduces_large_pores",
+      "skin_texture",
+      "good_for_oily_skin"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 76,
+    "concerns": [
+      "redness_reducing",
+      "reduces_irritation",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 77,
+    "concerns": [
+      "hydrating",
+      "scar_healing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 78,
+    "concerns": [
+      "reduces_large_pores",
+      "brightening",
+      "redness_reducing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 79,
+    "concerns": [
+      "scar_healing",
+      "reduces_irritation"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 80,
+    "concerns": [
+      "reduces_irritation",
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 81,
+    "concerns": [
+      "scar_healing",
+      "good_for_oily_skin",
+      "skin_texture"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 82,
+    "concerns": [
+      "redness_reducing",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 83,
+    "concerns": [
+      "dark_spots"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 84,
+    "concerns": [
+      "scar_healing",
+      "reduces_irritation",
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 85,
+    "concerns": [
+      "brightening",
+      "dark_spots",
+      "skin_texture"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 86,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 87,
+    "concerns": [
+      "scar_healing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 88,
+    "concerns": [
+      "brightening",
+      "skin_texture",
+      "anti_aging"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 89,
+    "concerns": [
+      "dark_spots",
+      "acne_fighting",
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 90,
+    "concerns": [
+      "scar_healing"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 91,
+    "concerns": [
+      "skin_texture",
+      "brightening",
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 92,
+    "concerns": [
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 93,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 94,
+    "concerns": [
+      "skin_texture",
+      "redness_reducing"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 95,
+    "concerns": [
+      "anti_aging",
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 96,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 97,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 98,
+    "concerns": [
+      "scar_healing",
+      "dark_spots",
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 99,
+    "concerns": [
+      "acne_fighting",
+      "reduces_irritation"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 100,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 101,
+    "concerns": [
+      "good_for_oily_skin"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 102,
+    "concerns": [
+      "skin_texture",
+      "acne_fighting"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 103,
+    "concerns": [
+      "good_for_oily_skin",
+      "skin_texture"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 104,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 105,
+    "concerns": [
+      "good_for_oily_skin"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 106,
+    "concerns": [
+      "acne_fighting"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 107,
+    "concerns": [
+      "good_for_oily_skin",
+      "skin_texture"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 108,
+    "concerns": [
+      "brightening",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 109,
+    "concerns": [
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 110,
+    "concerns": [
+      "reduces_irritation",
+      "skin_texture",
+      "good_for_oily_skin"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 111,
+    "concerns": [
+      "scar_healing",
+      "redness_reducing",
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 112,
+    "concerns": [
+      "anti_aging",
+      "skin_texture",
+      "acne_fighting"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 113,
+    "concerns": [
+      "reduces_irritation",
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 114,
+    "concerns": [
+      "brightening"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 115,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 116,
+    "concerns": [
+      "reduces_irritation",
+      "anti_aging",
+      "brightening"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 117,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 118,
+    "concerns": [
+      "anti_aging"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 119,
+    "concerns": [
+      "hydrating",
+      "brightening",
+      "reduces_irritation"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 120,
+    "concerns": [
+      "reduces_irritation",
+      "skin_texture",
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 121,
+    "concerns": [
+      "brightening",
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 122,
+    "concerns": [
+      "good_for_oily_skin",
+      "hydrating",
+      "brightening"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 123,
+    "concerns": [
+      "brightening",
+      "acne_fighting",
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 124,
+    "concerns": [
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 125,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 126,
+    "concerns": [
+      "scar_healing",
+      "redness_reducing"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 127,
+    "concerns": [
+      "scar_healing",
+      "reduces_irritation",
+      "acne_fighting"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 128,
+    "concerns": [
+      "acne_fighting",
+      "reduces_irritation",
+      "skin_texture"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 129,
+    "concerns": [
+      "hydrating",
+      "scar_healing"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 130,
+    "concerns": [
+      "brightening",
+      "reduces_irritation",
+      "dark_spots"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 131,
+    "concerns": [
+      "scar_healing",
+      "reduces_irritation"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 132,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 133,
+    "concerns": [
+      "brightening",
+      "dark_spots",
+      "reduces_irritation"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 134,
+    "concerns": [
+      "reduces_large_pores",
+      "good_for_oily_skin",
+      "skin_texture"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 135,
+    "concerns": [
+      "anti_aging"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 136,
+    "concerns": [
+      "reduces_large_pores",
+      "scar_healing"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 137,
+    "concerns": [
+      "good_for_oily_skin",
+      "scar_healing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 138,
+    "concerns": [
+      "good_for_oily_skin",
+      "skin_texture"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 139,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 140,
+    "concerns": [
+      "redness_reducing"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 141,
+    "concerns": [
+      "skin_texture"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 142,
+    "concerns": [
+      "acne_fighting",
+      "skin_texture",
+      "scar_healing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 143,
+    "concerns": [
+      "good_for_oily_skin",
+      "brightening"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 144,
+    "concerns": [
+      "acne_fighting",
+      "dark_spots"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 145,
+    "concerns": [
+      "dark_spots"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 146,
+    "concerns": [
+      "acne_fighting",
+      "dark_spots",
+      "brightening"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 147,
+    "concerns": [
+      "brightening",
+      "reduces_irritation",
+      "dark_spots"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 148,
+    "concerns": [
+      "scar_healing",
+      "redness_reducing"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 149,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 150,
+    "concerns": [
+      "anti_aging",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 151,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 152,
+    "concerns": [
+      "hydrating",
+      "acne_fighting"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 153,
+    "concerns": [
+      "dark_spots",
+      "skin_texture"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 154,
+    "concerns": [
+      "dark_spots"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 155,
+    "concerns": [
+      "good_for_oily_skin",
+      "reduces_large_pores",
+      "brightening"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 156,
+    "concerns": [
+      "reduces_irritation",
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 157,
+    "concerns": [
+      "acne_fighting"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 158,
+    "concerns": [
+      "anti_aging",
+      "scar_healing",
+      "reduces_irritation"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 159,
+    "concerns": [
+      "reduces_irritation"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 160,
+    "concerns": [
+      "brightening"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 161,
+    "concerns": [
+      "reduces_large_pores",
+      "acne_fighting",
+      "scar_healing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 162,
+    "concerns": [
+      "acne_fighting",
+      "brightening",
+      "dark_spots"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 163,
+    "concerns": [
+      "reduces_large_pores",
+      "good_for_oily_skin"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 164,
+    "concerns": [
+      "reduces_irritation",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 165,
+    "concerns": [
+      "acne_fighting",
+      "brightening",
+      "redness_reducing"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 166,
+    "concerns": [
+      "redness_reducing",
+      "anti_aging"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 167,
+    "concerns": [
+      "skin_texture",
+      "reduces_large_pores"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 168,
+    "concerns": [
+      "redness_reducing",
+      "hydrating"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 169,
+    "concerns": [
+      "redness_reducing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 170,
+    "concerns": [
+      "reduces_irritation",
+      "brightening"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 171,
+    "concerns": [
+      "redness_reducing",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 172,
+    "concerns": [
+      "reduces_irritation",
+      "reduces_large_pores"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 173,
+    "concerns": [
+      "skin_texture",
+      "reduces_large_pores",
+      "brightening"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 174,
+    "concerns": [
+      "brightening",
+      "dark_spots",
+      "skin_texture"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 175,
+    "concerns": [
+      "hydrating",
+      "scar_healing",
+      "skin_texture"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 176,
+    "concerns": [
+      "scar_healing",
+      "redness_reducing"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 177,
+    "concerns": [
+      "reduces_irritation",
+      "redness_reducing"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 178,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 179,
+    "concerns": [
+      "anti_aging",
+      "hydrating",
+      "redness_reducing"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 180,
+    "concerns": [
+      "brightening",
+      "anti_aging"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 181,
+    "concerns": [
+      "reduces_large_pores",
+      "redness_reducing",
+      "brightening"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 182,
+    "concerns": [
+      "hydrating",
+      "scar_healing"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 183,
+    "concerns": [
+      "dark_spots",
+      "redness_reducing"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 184,
+    "concerns": [
+      "brightening"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 185,
+    "concerns": [
+      "reduces_large_pores",
+      "reduces_irritation"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 186,
+    "concerns": [
+      "hydrating"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "serum"
+  },
+  {
+    "query_id": 187,
+    "concerns": [
+      "brightening",
+      "redness_reducing",
+      "anti_aging"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 188,
+    "concerns": [
+      "hydrating",
+      "redness_reducing",
+      "skin_texture"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 189,
+    "concerns": [
+      "good_for_oily_skin",
+      "reduces_large_pores",
+      "dark_spots"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 190,
+    "concerns": [
+      "scar_healing",
+      "redness_reducing",
+      "skin_texture"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 191,
+    "concerns": [
+      "brightening",
+      "good_for_oily_skin"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 192,
+    "concerns": [
+      "reduces_large_pores"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 193,
+    "concerns": [
+      "redness_reducing",
+      "reduces_large_pores"
+    ],
+    "skin_type": "sensitive_skin",
+    "skin_conditions": [
+      "rosacea"
+    ],
+    "product_type": "toner"
+  },
+  {
+    "query_id": 194,
+    "concerns": [
+      "dark_spots",
+      "reduces_irritation",
+      "acne_fighting"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "sunscreen"
+  },
+  {
+    "query_id": 195,
+    "concerns": [
+      "skin_texture",
+      "reduces_large_pores"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "day moisturizer"
+  },
+  {
+    "query_id": 196,
+    "concerns": [
+      "brightening"
+    ],
+    "skin_type": "dry_skin",
+    "skin_conditions": [],
+    "product_type": "general moisturizer"
+  },
+  {
+    "query_id": 197,
+    "concerns": [
+      "good_for_oily_skin",
+      "acne_fighting",
+      "brightening"
+    ],
+    "skin_type": "combination_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 198,
+    "concerns": [
+      "anti_aging",
+      "skin_texture",
+      "brightening"
+    ],
+    "skin_type": null,
+    "skin_conditions": [],
+    "product_type": "exfoliator"
+  },
+  {
+    "query_id": 199,
+    "concerns": [
+      "reduces_large_pores",
+      "acne_fighting"
+    ],
+    "skin_type": "oily_skin",
+    "skin_conditions": [],
+    "product_type": "night moisturizer"
+  },
+  {
+    "query_id": 200,
+    "concerns": [
+      "redness_reducing",
+      "good_for_oily_skin"
+    ],
+    "skin_type": null,
+    "skin_conditions": [
+      "eczema"
+    ],
+    "product_type": "day moisturizer"
+  }
+]
