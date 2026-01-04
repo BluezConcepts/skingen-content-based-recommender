@@ -45,10 +45,9 @@ async function fetchRecommendations(query) {
             const exp = rec.explanation;
             const cardId = `card-${index}`;
             
-            // Ensure ingredientList is an array
-            const ingredientList = Array.isArray(product.ingredientList) 
-                ? product.ingredientList 
-                : (product.ingredientList || '').split(',').map(i => i.trim()).filter(i => i);
+            const ingredientList = Array.isArray(product.ingredient_list) 
+                ? product.ingredient_list 
+                : (product.ingredient_list || '').split(',').map(i => i.trim()).filter(i => i);
             
             return `
                 <div class="product-card">
@@ -73,34 +72,16 @@ async function fetchRecommendations(query) {
                         </div>
                     </div>
                     
-                    ${generateSkinTypeCompatibility(exp, query)}
-                    
-                    <div class="safety-section">
-                        <h4><i class="bi bi-shield-check"></i> Safety Checks</h4>
-                        <div class="safety-grid">
-                            <div class="safety-item ${exp.safety_checks.fragrance_free ? 'safe' : 'unsafe'}">
-                                <i class="bi bi-${exp.safety_checks.fragrance_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
-                                <span>Fragrance-free</span>
-                            </div>
-                            <div class="safety-item ${exp.safety_checks.alcohol_free ? 'safe' : 'unsafe'}">
-                                <i class="bi bi-${exp.safety_checks.alcohol_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
-                                <span>Alcohol-free</span>
-                            </div>
-                            <div class="safety-item ${exp.safety_checks.irritant_free ? 'safe' : 'unsafe'}">
-                                <i class="bi bi-${exp.safety_checks.irritant_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
-                                <span>Irritant-free</span>
-                            </div>
-                        </div>
-                    </div>
+                    ${generateCompatibilitySection(exp, query)}
                     
                     ${generateWhyMatches(exp)}
                     
                     <div class="collapsible-section">
-                        <button class="collapsible-trigger" onclick="toggleSection('${cardId}-extra')">
+                        <button class="collapsible-trigger" onclick="toggleSection('${cardId}-details')">
                             <i class="bi bi-chevron-down"></i> View More Details
                         </button>
                         
-                        <div id="${cardId}-extra" class="collapsible-content">
+                        <div id="${cardId}-details" class="collapsible-content">
                             ${exp.all_claims && exp.all_claims.length > 0 ? `
                                 <div class="manufacturer-claims">
                                     <h4><i class="bi bi-card-checklist"></i> Manufacturer Claims</h4>
@@ -109,6 +90,8 @@ async function fetchRecommendations(query) {
                                     </ul>
                                 </div>
                             ` : ''}
+                            
+                            ${generateIngredientBreakdown(exp)}
                             
                             ${ingredientList.length > 0 ? `
                                 <div class="ingredients-section">
@@ -120,15 +103,6 @@ async function fetchRecommendations(query) {
                             ` : ''}
                         </div>
                     </div>
-                    
-                    ${exp.warnings && exp.warnings.length > 0 ? `
-                        <div class="warning-box">
-                            <h4><i class="bi bi-exclamation-triangle"></i> Considerations</h4>
-                            <ul>
-                                ${exp.warnings.map(w => `<li>${formatText(w)}</li>`).join('')}
-                            </ul>
-                        </div>
-                    ` : ''}
                 </div>
             `;
         }).join('');
@@ -144,24 +118,65 @@ async function fetchRecommendations(query) {
     }
 }
 
-function generateSkinTypeCompatibility(exp, query) {
-    if (!query.skinType) {
-        return '';
+function generateCompatibilitySection(exp, query) {
+    const hasWarnings = exp.warnings && exp.warnings.length > 0;
+    const safetyChecks = exp.safety_checks || {};
+    
+    // Determine overall compatibility
+    let compatibilityStatus = 'compatible';
+    let compatibilityMessage = '';
+    
+    if (query.skinType) {
+        if (query.skinType === 'normal_skin') {
+            compatibilityStatus = hasWarnings ? 'warning' : 'compatible';
+            compatibilityMessage = hasWarnings 
+                ? 'Generally suitable, but note considerations below'
+                : 'Generally suitable for Normal Skin';
+        } else {
+            compatibilityStatus = hasWarnings ? 'warning' : 'compatible';
+            compatibilityMessage = hasWarnings
+                ? `May have concerns for ${formatText(query.skinType)} - see below`
+                : `Suitable for ${formatText(query.skinType)}`;
+        }
+    } else {
+        compatibilityStatus = hasWarnings ? 'warning' : 'compatible';
+        compatibilityMessage = hasWarnings 
+            ? 'Some considerations to note'
+            : 'No compatibility issues detected';
     }
     
-    const hasWarnings = exp.warnings && exp.warnings.length > 0;
-    
     return `
-        <div class="skin-compatibility ${hasWarnings ? 'warning' : 'compatible'}">
-            <h4>
-                <i class="bi bi-${hasWarnings ? 'exclamation-triangle' : 'check-circle'}"></i> 
-                Skin Type Compatibility
-            </h4>
-            <p>
-                ${hasWarnings 
-                    ? `May have concerns for ${formatText(query.skinType)} - see considerations below` 
-                    : `Generally suitable for ${formatText(query.skinType)}`}
-            </p>
+        <div class="compatibility-section">
+            <h4><i class="bi bi-shield-check"></i> Compatibility & Safety</h4>
+            
+            <div class="compatibility-status ${compatibilityStatus}">
+                <i class="bi bi-${compatibilityStatus === 'compatible' ? 'check-circle-fill' : 'exclamation-triangle-fill'}"></i>
+                <span>${compatibilityMessage}</span>
+            </div>
+            
+            <div class="safety-grid">
+                <div class="safety-item ${safetyChecks.fragrance_free ? 'safe' : 'unsafe'}">
+                    <i class="bi bi-${safetyChecks.fragrance_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
+                    <span>Fragrance-free</span>
+                </div>
+                <div class="safety-item ${safetyChecks.alcohol_free ? 'safe' : 'unsafe'}">
+                    <i class="bi bi-${safetyChecks.alcohol_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
+                    <span>Alcohol-free</span>
+                </div>
+                <div class="safety-item ${safetyChecks.irritant_free ? 'safe' : 'unsafe'}">
+                    <i class="bi bi-${safetyChecks.irritant_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
+                    <span>Irritant-free</span>
+                </div>
+            </div>
+            
+            ${hasWarnings ? `
+                <div class="warnings-list">
+                    <h5><i class="bi bi-info-circle"></i> Things to Consider:</h5>
+                    <ul>
+                        ${exp.warnings.map(w => `<li>${formatText(w)}</li>`).join('')}
+                    </ul>
+                </div>
+            ` : ''}
         </div>
     `;
 }
@@ -193,6 +208,41 @@ function generateWhyMatches(exp) {
                 <div class="ingredient-category">
                     <span class="category-label">${category}:</span>
                     <span class="ingredient-items">${ingredients.join(', ')}</span>
+                </div>
+            `;
+        }
+        
+        html += `</div>`;
+    }
+    
+    html += `</div>`;
+    
+    return html;
+}
+
+function generateIngredientBreakdown(exp) {
+    const breakdown = exp.ingredient_breakdown || {};
+    
+    if (Object.keys(breakdown).length === 0) {
+        return '';
+    }
+    
+    let html = `
+        <div class="ingredient-breakdown">
+            <h4><i class="bi bi-layers"></i> Complete Ingredient Breakdown</h4>
+    `;
+    
+    for (const [group, categories] of Object.entries(breakdown)) {
+        html += `<div class="breakdown-group">`;
+        html += `<h5>${group}</h5>`;
+        
+        for (const [category, ingredients] of Object.entries(categories)) {
+            if (!ingredients || ingredients.length === 0) continue;
+            
+            html += `
+                <div class="breakdown-category">
+                    <span class="breakdown-label">${category}:</span>
+                    <span class="breakdown-items">${ingredients.join(', ')}</span>
                 </div>
             `;
         }

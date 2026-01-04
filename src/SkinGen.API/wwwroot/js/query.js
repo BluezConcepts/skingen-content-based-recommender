@@ -1,5 +1,73 @@
 const API_URL = 'http://localhost:5166/api/recommend';
 
+// Store tags
+let specificIngredientsTags = [];
+let allergiesTags = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Setup tag inputs
+    setupTagInput('specificIngredients', 'specificIngredientsTags', specificIngredientsTags);
+    setupTagInput('allergies', 'allergiesTags', allergiesTags);
+});
+
+function setupTagInput(inputId, containerId, tagsArray) {
+    const input = document.getElementById(inputId);
+    const container = document.getElementById(containerId);
+    
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            
+            const value = input.value.trim();
+            if (value && !tagsArray.includes(value)) {
+                // Add to array
+                tagsArray.push(value);
+                
+                // Create tag element
+                const tag = document.createElement('div');
+                tag.className = 'tag';
+                tag.innerHTML = `
+                    <span>${value}</span>
+                    <span class="tag-remove" onclick="removeTag('${inputId}', '${containerId}', '${value}')">×</span>
+                `;
+                container.appendChild(tag);
+                
+                // Clear input
+                input.value = '';
+            }
+        }
+    });
+}
+
+function removeTag(inputId, containerId, value) {
+    // Determine which array to use
+    const tagsArray = inputId === 'specificIngredients' ? specificIngredientsTags : allergiesTags;
+    
+    // Remove from array
+    const index = tagsArray.indexOf(value);
+    if (index > -1) {
+        tagsArray.splice(index, 1);
+    }
+    
+    // Re-render tags
+    renderTags(containerId, tagsArray, inputId);
+}
+
+function renderTags(containerId, tagsArray, inputId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    
+    tagsArray.forEach(value => {
+        const tag = document.createElement('div');
+        tag.className = 'tag';
+        tag.innerHTML = `
+            <span>${value}</span>
+            <span class="tag-remove" onclick="removeTag('${inputId}', '${containerId}', '${value}')">×</span>
+        `;
+        container.appendChild(tag);
+    });
+}
+
 document.getElementById('queryForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -27,17 +95,13 @@ function buildQuery() {
     
     const ingredientGroups = getCheckedValues('#ingredientsGroup input[type="checkbox"]:checked');
     
-    const specificIngredientsInput = document.getElementById('specificIngredients').value;
-    const specificIngredients = specificIngredientsInput 
-        ? specificIngredientsInput.split(',').map(s => s.trim()).filter(s => s) 
-        : null;
+    // Use the tags arrays instead of parsing input
+    const specificIngredients = specificIngredientsTags.length > 0 ? specificIngredientsTags : null;
     
     const blockedCategories = getCheckedValues('#blockedGroup input[type="checkbox"]:checked');
     
-    const allergiesInput = document.getElementById('allergies').value;
-    const allergies = allergiesInput 
-        ? allergiesInput.split(',').map(s => s.trim()).filter(s => s) 
-        : null;
+    // Use the tags arrays instead of parsing input
+    const allergies = allergiesTags.length > 0 ? allergiesTags : null;
     
     return {
         productType,

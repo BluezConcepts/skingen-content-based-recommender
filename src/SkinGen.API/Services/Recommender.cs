@@ -1,5 +1,4 @@
 using SkinGen.API.Models;
-using Parquet.Serialization;
 using System.Text.Json;
 
 namespace SkinGen.API.Services;
@@ -13,6 +12,7 @@ public class Recommender
     {
         LoadData();
     }
+
     private void LoadData()
     {
         var jsonPath = Path.Combine(
@@ -39,38 +39,12 @@ public class Recommender
             Console.WriteLine($"ERROR loading JSON: {ex.Message}");
         }
     }
-    // private void LoadData()
-    // {
-    //     var parquetPath = Path.Combine(
-    //         AppDomain.CurrentDomain.BaseDirectory, 
-    //         "Data", 
-    //         "skingen_products_enriched_simple.parquet"
-    //     );
-        
-    //     if (!File.Exists(parquetPath))
-    //     {
-    //         Console.WriteLine($"ERROR: Data file not found at {parquetPath}");
-    //         return;
-    //     }
-
-    //     try
-    //     {
-    //         using var stream = File.OpenRead(parquetPath);
-    //         _products = ParquetSerializer.DeserializeAsync<Product>(stream).Result.ToList();
-            
-    //         Console.WriteLine($"✓ Loaded {_products.Count} products from Parquet");
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         Console.WriteLine($"ERROR loading Parquet: {ex.Message}");
-    //     }
-    // }
 
     public RecommendationResponse GetRecommendations(UserQuery query, int n = 10)
     {
-        // var candidates = _products.Where(p => p.Type == query.ProductType).ToList();
         var candidates = _products.Where(p => 
-        p.Type.Equals(query.ProductType, StringComparison.OrdinalIgnoreCase)).ToList();
+            p.Type.Equals(query.ProductType, StringComparison.OrdinalIgnoreCase)
+        ).ToList();
         
         int initialCount = candidates.Count;
         Console.WriteLine($"Found {initialCount} {query.ProductType} products");
@@ -112,6 +86,7 @@ public class Recommender
 
     private List<Product> ApplyHardFilters(List<Product> candidates, UserQuery query)
     {
+        // Filter out products that trigger skin conditions
         if (query.SkinConditions != null && query.SkinConditions.Any())
         {
             candidates = candidates.Where(p => 
@@ -119,6 +94,7 @@ public class Recommender
             ).ToList();
         }
 
+        // Filter by blocked categories (fragrance, alcohol)
         if (query.BlockedCategories != null)
         {
             if (query.BlockedCategories.Contains("fragrance"))
@@ -128,6 +104,7 @@ public class Recommender
                 candidates = candidates.Where(p => !p.HasDryingAlcohol).ToList();
         }
 
+        // Filter by required ingredient groups
         if (query.IngredientGroups != null)
         {
             foreach (var group in query.IngredientGroups)
@@ -148,6 +125,24 @@ public class Recommender
             }
         }
 
+        // Filter by specific ingredients (user-typed tags)
+        if (query.SpecificIngredients != null)
+        {
+            Console.WriteLine($"Looking for specific ingredients: {string.Join(", ", query.SpecificIngredients)}");
+            
+            foreach (var ingredient in query.SpecificIngredients)
+            {
+                var beforeCount = candidates.Count;
+                
+                candidates = candidates.Where(p => 
+                    p.IngredientList.Any(ing => ing.Contains(ingredient, StringComparison.OrdinalIgnoreCase))
+                ).ToList();
+                
+                Console.WriteLine($"  After filtering for '{ingredient}': {candidates.Count} products (was {beforeCount})");
+            }
+        }
+
+        // Filter out allergens
         if (query.Allergies != null)
         {
             foreach (var allergen in query.Allergies)
@@ -158,6 +153,7 @@ public class Recommender
             }
         }
 
+        // Filter by concern-specific rules
         var concernRules = new Dictionary<string, string[]>
         {
             { "redness_reducing", new[] { "irritating" } },
@@ -240,9 +236,47 @@ public class Recommender
         var matchedConcerns = product.PositiveConcerns.Intersect(query.Concerns).ToList();
         explanation["matched_concerns"] = matchedConcerns;
         explanation["all_claims"] = product.PositiveConcerns;
-        explanation["warnings"] = product.NegativeConcerns;
+        
+        // IMPROVED WARNINGS LOGIC - Only show relevant warnings based on skin type
+        var warnings = new List<string>();
+        
+        if (!string.IsNullOrEmpty(query.SkinType))
+        {
+            var relevantWarnings = new Dictionary<string, string[]>
+            {
+                { "dry_skin", new[] { "drying" } },
+                { "oily_skin", new[] { "may_worsen_oily_skin" } },
+                { "sensitive_skin", new[] { "irritating"} },
+                { "combination_skin", new[] { "drying", "may_worsen_oily_skin" } }
+                // normal_skin gets NO warnings from negative_concerns
+            };
+            
+            if (relevantWarnings.ContainsKey(query.SkinType))
+            {
+                var applicableWarnings = product.NegativeConcerns
+                    .Where(nc => relevantWarnings[query.SkinType].Contains(nc))
+                    .ToList();
+                warnings.AddRange(applicableWarnings);
+            }
+        }
+        else
+        {
+            // No skin type selected - show all warnings
+            warnings.AddRange(product.NegativeConcerns);
+        }
 
-        // Verified ingredients by concern with proper categorization
+        // Add skin condition warnings
+        if (query.SkinConditions != null && product.ConditionConcerns.Any())
+        {
+            var conditionWarnings = product.ConditionConcerns
+                .Select(cc => $"may_aggravate_{cc}")
+                .ToList();
+            warnings.AddRange(conditionWarnings);
+        }
+
+        explanation["warnings"] = warnings;
+
+        // Verified ingredients by concern with MORE ingredients shown (5 instead of 3)
         var verifiedIngredients = new Dictionary<string, Dictionary<string, List<string>>>();
         
         var concernToCategories = new Dictionary<string, string[]>
@@ -252,13 +286,16 @@ public class Recommender
             { "brightening", new[] { "exfoliant", "antioxidant" } },
             { "dark_spots", new[] { "exfoliant", "antioxidant" } },
             { "redness_reducing", new[] { "antioxidant", "plant_extract" } },
-            { "acne_fighting", new[] { "exfoliant", "plant_extract" } },
-            { "good_for_oily_skin", new[] { "exfoliant", "plant_extract" } },
+            { "acne_fighting", new[] { "exfoliant" } },
+            { "good_for_oily_skin", new[] { "exfoliant" } },
             { "reduces_large_pores", new[] { "exfoliant", "antioxidant" } },
             { "scar_healing", new[] { "peptide", "antioxidant" } },
             { "skin_texture", new[] { "exfoliant", "peptide" } }
         };
 
+        // GLOBAL deduplication - track ALL ingredients shown across ALL concerns
+        var globalSeenIngredients = new HashSet<string>();
+        
         foreach (var concern in query.Concerns)
         {
             if (!concernToCategories.ContainsKey(concern)) continue;
@@ -267,24 +304,32 @@ public class Recommender
             
             foreach (var category in concernToCategories[concern])
             {
-                var ingredients = category switch
+                List<string> rawIngredients = category switch
                 {
-                    "retinoid" => product.RetinoidList.Take(3).ToList(),
-                    "peptide" => product.PeptideList.Take(3).ToList(),
-                    "antioxidant" => product.AntioxidantList.Take(3).ToList(),
-                    "humectant" => product.HumectantList.Take(3).ToList(),
-                    "emollient" => product.EmollientList.Take(3).ToList(),
-                    "occlusive" => product.OcclusiveList.Take(3).ToList(),
-                    "exfoliant" => product.ExfoliantList.Take(3).ToList(),
-                    "plant_extract" => product.PlantExtractList.Take(3).ToList(),
+                    "retinoid" => product.RetinoidList,
+                    "peptide" => product.PeptideList,
+                    "antioxidant" => product.AntioxidantList,
+                    "humectant" => product.HumectantList,
+                    "emollient" => product.EmollientList,
+                    "occlusive" => product.OcclusiveList,
+                    "exfoliant" => product.ExfoliantList,
+                    "plant_extract" => FilterFragranceComponents(product.PlantExtractList),
                     _ => new List<string>()
                 };
                 
-                if (ingredients.Any())
+                // Increased from 3 to 5 ingredients per category
+                var uniqueIngredients = rawIngredients
+                    .Where(ing => !globalSeenIngredients.Contains(ing))
+                    .Take(5)
+                    .ToList();
+                
+                if (uniqueIngredients.Any())
                 {
-                    // Capitalize category name
+                    foreach (var ing in uniqueIngredients)
+                        globalSeenIngredients.Add(ing);
+                    
                     var categoryName = char.ToUpper(category[0]) + category.Substring(1);
-                    categoryDict[categoryName] = ingredients;
+                    categoryDict[categoryName] = uniqueIngredients;
                 }
             }
             
@@ -296,6 +341,78 @@ public class Recommender
 
         explanation["verified_ingredients"] = verifiedIngredients;
         
+        // ADD COMPLETE INGREDIENT BREAKDOWN
+        var ingredientBreakdown = new Dictionary<string, Dictionary<string, List<string>>>();
+        
+        // Actives
+        var actives = new Dictionary<string, List<string>>();
+        if (product.RetinoidList.Any()) actives["Retinoids"] = product.RetinoidList;
+        if (product.PeptideList.Any()) actives["Peptides"] = product.PeptideList;
+        if (product.AntioxidantList.Any()) actives["Antioxidants"] = product.AntioxidantList;
+        if (product.ExfoliantList.Any()) actives["Exfoliants"] = product.ExfoliantList;
+        if (actives.Any()) ingredientBreakdown["Actives"] = actives;
+        
+        // Support
+        var support = new Dictionary<string, List<string>>();
+        if (product.HumectantList.Any()) support["Humectants"] = product.HumectantList;
+        if (product.EmollientList.Any()) support["Emollients"] = product.EmollientList;
+        if (product.OcclusiveList.Any()) support["Occlusives"] = product.OcclusiveList;
+        if (support.Any()) ingredientBreakdown["Support"] = support;
+        
+        // Utility
+        var utility = new Dictionary<string, List<string>>();
+        if (product.TextureEnhancerList.Any()) utility["Texture Enhancers"] = product.TextureEnhancerList;
+        if (product.FilmFormingList.Any()) utility["Film Forming"] = product.FilmFormingList;
+        if (product.AbsorbentList.Any()) utility["Absorbents"] = product.AbsorbentList;
+        if (utility.Any()) ingredientBreakdown["Utility"] = utility;
+        
+        // Sensory
+        var sensory = new Dictionary<string, List<string>>();
+        var filteredPlantExtracts = FilterFragranceComponents(product.PlantExtractList);
+        if (filteredPlantExtracts.Any()) sensory["Plant Extracts"] = filteredPlantExtracts;
+        if (sensory.Any()) ingredientBreakdown["Sensory"] = sensory;
+        
+        // Risks
+        // Risks - deduplicate ingredients that are both fragrance AND irritants
+        var risks = new Dictionary<string, List<string>>();
+        var allRiskIngredients = new HashSet<string>();
+
+        if (product.FragranceIngredients.Any())
+        {
+            risks["Fragrance"] = product.FragranceIngredients;
+            foreach (var ing in product.FragranceIngredients)
+                allRiskIngredients.Add(ing);
+        }
+
+        if (product.IrritantIngredients.Any())
+        {
+            // Only add irritants that aren't already listed as fragrance
+            var uniqueIrritants = product.IrritantIngredients
+                .Where(ing => !allRiskIngredients.Contains(ing))
+                .ToList();
+            
+            if (uniqueIrritants.Any())
+            {
+                risks["Irritants"] = uniqueIrritants;
+                foreach (var ing in uniqueIrritants)
+                    allRiskIngredients.Add(ing);
+            }
+        }
+
+        if (product.DryingAlcoholIngredients.Any())
+        {
+            // Only add alcohols that aren't already listed
+            var uniqueAlcohols = product.DryingAlcoholIngredients
+                .Where(ing => !allRiskIngredients.Contains(ing))
+                .ToList();
+            
+            if (uniqueAlcohols.Any())
+                risks["Drying Alcohols"] = uniqueAlcohols;
+        }
+
+        if (risks.Any()) ingredientBreakdown["Risks"] = risks;
+        explanation["ingredient_breakdown"] = ingredientBreakdown;
+        
         explanation["safety_checks"] = new Dictionary<string, bool>
         {
             { "fragrance_free", !product.HasFragrance },
@@ -304,5 +421,30 @@ public class Recommender
         };
 
         return explanation;
+    }
+
+    private List<string> FilterFragranceComponents(List<string> ingredients)
+    {
+        // EU 26 allergens (must be labeled separately) + EU banned allergens
+        // These should NOT be recommended as beneficial plant extracts
+        var fragranceAllergens = new[] { 
+            // EU Banned (since 2021)
+            "hydroxyisohexyl 3-cyclohexene carboxaldehyde", "lyral",
+            "atranol", "chloroatranol",
+            
+            // EU 26 allergens
+            "alpha-isomethyl ionone", "amyl cinnamal", "amylcinnamyl alcohol",
+            "anise alcohol", "benzyl alcohol", "benzyl benzoate", "benzyl cinnamate",
+            "benzyl salicylate", "butylphenyl methylpropional", "cinnamal",
+            "cinnamyl alcohol", "citral", "citronellol", "coumarin", "eugenol",
+            "farnesol", "geraniol", "hexyl cinnamal", "hydroxycitronellal",
+            "isoeugenol", "limonene", "linalool", "methyl 2-octynoate",
+            "evernia furfuracea", "evernia prunastri"  // Tree moss extracts
+        };
+        
+        return ingredients
+            .Where(ing => !fragranceAllergens.Any(allergen => 
+                ing.Contains(allergen, StringComparison.OrdinalIgnoreCase)))
+            .ToList();
     }
 }
