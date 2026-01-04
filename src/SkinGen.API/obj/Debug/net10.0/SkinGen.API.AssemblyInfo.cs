@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkinGen.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91794e089579bc766db0857b45ef03f9cd96d241")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81a898ae6006ecc1c78fe6a1e4fb19fa237bf67a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkinGen.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkinGen.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -77,6 +77,11 @@ async function fetchRecommendations(query) {
                     ${generateWhyMatches(exp)}
                     
                     <div class="collapsible-section">
+                        <p class="philosophy-note">
+                            <i class="bi bi-info-circle"></i> 
+                            Ingredient data is always shown in full. Interpretations are provided to support, not replace informed decisions.
+                        </p>
+                        
                         <button class="collapsible-trigger" onclick="toggleSection('${cardId}-details')">
                             <i class="bi bi-chevron-down"></i> View More Details
                         </button>
@@ -94,13 +99,14 @@ async function fetchRecommendations(query) {
                             ${generateIngredientBreakdown(exp)}
                             
                             ${ingredientList.length > 0 ? `
-                                <div class="ingredients-section">
-                                    <h4><i class="bi bi-clipboard-data"></i> Full Ingredient List (${ingredientList.length} ingredients)</h4>
-                                    <div class="ingredients-list">
-                                        ${ingredientList.join(', ')}
-                                    </div>
+                            <div class="ingredients-section">
+                                <h4><i class="bi bi-clipboard-data"></i> Full INCI Ingredient List (${ingredientList.length} ingredients)</h4>
+                                <p class="inci-note">Displayed for transparency and independent verification.</p>
+                                <div class="ingredients-list">
+                                    ${ingredientList.join(', ')}
                                 </div>
-                            ` : ''}
+                            </div>
+                        ` : ''}
                         </div>
                     </div>
                 </div>
@@ -227,22 +233,59 @@ function generateIngredientBreakdown(exp) {
         return '';
     }
     
+    // Map old names to new names and explanations
+    const categoryInfo = {
+        'Actives': {
+            title: 'Active Components',
+            explanation: 'Provide direct biological support aligned with the selected skin concern.'
+        },
+        'Support': {
+            title: 'Supportive Ingredients',
+            explanation: 'Help maintain hydration, barrier function, and delivery of active ingredients.'
+        },
+        'Utility': {
+            title: 'Formulation & Stability Agents',
+            explanation: 'Improve texture, consistency, and shelf stability without targeting skin concerns directly.'
+        },
+        'Sensory': {
+            title: 'Sensory Enhancement',
+            explanation: 'Contribute to product feel, scent, or visual appeal.'
+        },
+        'Risks': {
+            title: 'Potential Sensitivities',
+            explanation: 'Ingredients that may not be suitable for all skin profiles.'
+        }
+    };
+    
+    const cardId = `breakdown-${Math.random().toString(36).substr(2, 9)}`;
+    
     let html = `
         <div class="ingredient-breakdown">
-            <h4><i class="bi bi-layers"></i> Complete Ingredient Breakdown</h4>
+            <div class="breakdown-header">
+                <h4><i class="bi bi-layers"></i> Ingredient Intelligence Breakdown</h4>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="${cardId}-toggle" onchange="toggleIngredientRoles('${cardId}')">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-label">Show ingredient roles</span>
+                </label>
+            </div>
+            <p class="breakdown-note">Ingredient groupings are shown for explanation purposes.</p>
     `;
     
     for (const [group, categories] of Object.entries(breakdown)) {
+        const info = categoryInfo[group] || { title: group, explanation: '' };
+        
         html += `<div class="breakdown-group">`;
-        html += `<h5>${group}</h5>`;
+        html += `<h5>${info.title}</h5>`;
+        html += `<p class="category-explanation">${info.explanation}</p>`;
         
         for (const [category, ingredients] of Object.entries(categories)) {
             if (!ingredients || ingredients.length === 0) continue;
             
             html += `
-                <div class="breakdown-category">
+                <div class="breakdown-category ${cardId}-ingredients" style="display: none;">
                     <span class="breakdown-label">${category}:</span>
-                    <span class="breakdown-items">${ingredients.join(', ')}</span>
+                    <span class="breakdown-items">${ingredients.join(' · ')}</span>
                 </div>
             `;
         }
@@ -254,7 +297,19 @@ function generateIngredientBreakdown(exp) {
     
     return html;
 }
-
+function toggleIngredientRoles(cardId) {
+    const toggle = document.getElementById(`${cardId}-toggle`);
+    const ingredients = document.querySelectorAll(`.${cardId}-ingredients`);
+    const label = toggle.parentElement.querySelector('.toggle-label');
+    
+    if (toggle.checked) {
+        ingredients.forEach(el => el.style.display = 'block');
+        label.textContent = 'Hide ingredient roles';
+    } else {
+        ingredients.forEach(el => el.style.display = 'none');
+        label.textContent = 'Show ingredient roles';
+    }
+}
 function toggleSection(id) {
     const section = document.getElementById(id);
     const trigger = section.previousElementSibling;
