@@ -53,7 +53,10 @@ async function fetchRecommendations(query) {
                 <div class="product-card">
                     <div class="product-rank">#${rec.rank}</div>
                     
-                    <div class="product-score">${score}%</div>
+                    <div class="product-score-section">
+                        <div class="product-score">${score}%</div>
+                        <div class="score-label">Skin Compatibility Score</div>
+                    </div>
                     
                     <div class="product-header-info">
                         <div class="product-name">${product.name}</div>
@@ -89,7 +92,7 @@ async function fetchRecommendations(query) {
                         <div id="${cardId}-details" class="collapsible-content">
                             ${exp.all_claims && exp.all_claims.length > 0 ? `
                                 <div class="manufacturer-claims">
-                                    <h4><i class="bi bi-card-checklist"></i> Manufacturer Claims</h4>
+                                    <h4><i class="bi bi-card-checklist"></i> Brand-Stated Claims</h4>
                                     <ul>
                                         ${exp.all_claims.map(claim => `<li><i class="bi bi-tag"></i> ${formatText(claim)}</li>`).join('')}
                                     </ul>
@@ -99,14 +102,14 @@ async function fetchRecommendations(query) {
                             ${generateIngredientBreakdown(exp)}
                             
                             ${ingredientList.length > 0 ? `
-                            <div class="ingredients-section">
-                                <h4><i class="bi bi-clipboard-data"></i> Full INCI Ingredient List (${ingredientList.length} ingredients)</h4>
-                                <p class="inci-note">Displayed for transparency and independent verification.</p>
-                                <div class="ingredients-list">
-                                    ${ingredientList.join(', ')}
+                                <div class="ingredients-section">
+                                    <h4><i class="bi bi-clipboard-data"></i> Full INCI Ingredient List (${ingredientList.length} ingredients)</h4>
+                                    <p class="inci-note">Displayed for transparency and independent verification.</p>
+                                    <div class="ingredients-list">
+                                        ${ingredientList.join(', ')}
+                                    </div>
                                 </div>
-                            </div>
-                        ` : ''}
+                            ` : ''}
                         </div>
                     </div>
                 </div>
@@ -128,7 +131,6 @@ function generateCompatibilitySection(exp, query) {
     const hasWarnings = exp.warnings && exp.warnings.length > 0;
     const safetyChecks = exp.safety_checks || {};
     
-    // Determine overall compatibility
     let compatibilityStatus = 'compatible';
     let compatibilityMessage = '';
     
@@ -153,7 +155,7 @@ function generateCompatibilitySection(exp, query) {
     
     return `
         <div class="compatibility-section">
-            <h4><i class="bi bi-shield-check"></i> Compatibility & Safety</h4>
+            <h4><i class="bi bi-shield-check"></i> Skin Tolerance Assessment</h4>
             
             <div class="compatibility-status ${compatibilityStatus}">
                 <i class="bi bi-${compatibilityStatus === 'compatible' ? 'check-circle-fill' : 'exclamation-triangle-fill'}"></i>
@@ -163,15 +165,17 @@ function generateCompatibilitySection(exp, query) {
             <div class="safety-grid">
                 <div class="safety-item ${safetyChecks.fragrance_free ? 'safe' : 'unsafe'}">
                     <i class="bi bi-${safetyChecks.fragrance_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
-                    <span>Fragrance-free</span>
+                    <span>${safetyChecks.fragrance_free ? 'Fragrance-free' : 'Contains fragrance'}</span>
                 </div>
                 <div class="safety-item ${safetyChecks.alcohol_free ? 'safe' : 'unsafe'}">
                     <i class="bi bi-${safetyChecks.alcohol_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
-                    <span>Alcohol-free</span>
+                    <span>${safetyChecks.alcohol_free ? 'Alcohol-free' : 'Contains drying alcohol'}</span>
                 </div>
-                <div class="safety-item ${safetyChecks.irritant_free ? 'safe' : 'unsafe'}">
+                <div class="safety-item ${safetyChecks.irritant_free ? 'safe' : 'unsafe'} ${!safetyChecks.irritant_free ? 'has-tooltip' : ''}" 
+                    ${!safetyChecks.irritant_free ? 'data-tooltip="This does not mean the product is unsafe. Some ingredients may be unsuitable for highly reactive or compromised skin."' : ''}>
                     <i class="bi bi-${safetyChecks.irritant_free ? 'check-circle-fill' : 'x-circle-fill'}"></i>
-                    <span>Irritant-free</span>
+                    <span>${safetyChecks.irritant_free ? 'No known irritants' : 'Not fully irritant-free'}</span>
+                    ${!safetyChecks.irritant_free ? '<i class="bi bi-info-circle tooltip-icon"></i>' : ''}
                 </div>
             </div>
             
@@ -196,7 +200,7 @@ function generateWhyMatches(exp) {
     
     let html = `
         <div class="why-matches">
-            <h4><i class="bi bi-lightbulb"></i> Why This Product Matches</h4>
+            <h4><i class="bi bi-lightbulb"></i> Why this works for your skin</h4>
     `;
     
     for (const [concern, categories] of Object.entries(verifiedIngredients)) {
@@ -233,7 +237,6 @@ function generateIngredientBreakdown(exp) {
         return '';
     }
     
-    // Map old names to new names and explanations
     const categoryInfo = {
         'Actives': {
             title: 'Active Components',
@@ -253,7 +256,8 @@ function generateIngredientBreakdown(exp) {
         },
         'Risks': {
             title: 'Potential Sensitivities',
-            explanation: 'Ingredients that may not be suitable for all skin profiles.'
+            explanation: 'Ingredients that may cause irritation for some skin profiles, depending on sensitivity and concentration.',
+            hasTooltip: true
         }
     };
     
@@ -276,8 +280,22 @@ function generateIngredientBreakdown(exp) {
         const info = categoryInfo[group] || { title: group, explanation: '' };
         
         html += `<div class="breakdown-group">`;
-        html += `<h5>${info.title}</h5>`;
-        html += `<p class="category-explanation">${info.explanation}</p>`;
+        html += `
+            <h5>
+                ${info.title}
+                ${info.hasTooltip ? `
+                    <span class="has-tooltip" data-tooltip="${info.explanation}">
+                        <i class="bi bi-info-circle tooltip-icon"></i>
+                    </span>
+                ` : ''}
+            </h5>
+        `;
+        
+        if (!info.hasTooltip) {
+            html += `<p class="category-explanation">${info.explanation}</p>`;
+        } else {
+            html += `<p class="category-explanation">${info.explanation}</p>`;
+        }
         
         for (const [category, ingredients] of Object.entries(categories)) {
             if (!ingredients || ingredients.length === 0) continue;
@@ -297,19 +315,7 @@ function generateIngredientBreakdown(exp) {
     
     return html;
 }
-function toggleIngredientRoles(cardId) {
-    const toggle = document.getElementById(`${cardId}-toggle`);
-    const ingredients = document.querySelectorAll(`.${cardId}-ingredients`);
-    const label = toggle.parentElement.querySelector('.toggle-label');
-    
-    if (toggle.checked) {
-        ingredients.forEach(el => el.style.display = 'block');
-        label.textContent = 'Hide ingredient roles';
-    } else {
-        ingredients.forEach(el => el.style.display = 'none');
-        label.textContent = 'Show ingredient roles';
-    }
-}
+
 function toggleSection(id) {
     const section = document.getElementById(id);
     const trigger = section.previousElementSibling;
@@ -325,6 +331,20 @@ function toggleSection(id) {
         icon.classList.remove('bi-chevron-down');
         icon.classList.add('bi-chevron-up');
         trigger.innerHTML = '<i class="bi bi-chevron-up"></i> Hide Details';
+    }
+}
+
+function toggleIngredientRoles(cardId) {
+    const toggle = document.getElementById(`${cardId}-toggle`);
+    const ingredients = document.querySelectorAll(`.${cardId}-ingredients`);
+    const label = toggle.parentElement.querySelector('.toggle-label');
+    
+    if (toggle.checked) {
+        ingredients.forEach(el => el.style.display = 'block');
+        label.textContent = 'Hide ingredient roles';
+    } else {
+        ingredients.forEach(el => el.style.display = 'none');
+        label.textContent = 'Show ingredient roles';
     }
 }
 

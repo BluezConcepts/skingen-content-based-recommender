@@ -237,16 +237,16 @@ public class Recommender
         explanation["matched_concerns"] = matchedConcerns;
         explanation["all_claims"] = product.PositiveConcerns;
         
-        // IMPROVED WARNINGS LOGIC - Only show relevant warnings based on skin type
+        // Only show relevant warnings based on skin type
         var warnings = new List<string>();
-        
+
         if (!string.IsNullOrEmpty(query.SkinType))
         {
             var relevantWarnings = new Dictionary<string, string[]>
             {
                 { "dry_skin", new[] { "drying" } },
                 { "oily_skin", new[] { "may_worsen_oily_skin" } },
-                { "sensitive_skin", new[] { "irritating"} },
+                { "sensitive_skin", new[] { "irritating", "drying" } },
                 { "combination_skin", new[] { "drying", "may_worsen_oily_skin" } }
                 // normal_skin gets NO warnings from negative_concerns
             };
@@ -265,13 +265,18 @@ public class Recommender
             warnings.AddRange(product.NegativeConcerns);
         }
 
-        // Add skin condition warnings
-        if (query.SkinConditions != null && product.ConditionConcerns.Any())
+        // Add skin condition warnings ONLY if user selected "None" (wants informational warnings)
+        // If user selected a specific condition, those products are already filtered out
+        if (query.SkinConditions == null || !query.SkinConditions.Any())
         {
-            var conditionWarnings = product.ConditionConcerns
-                .Select(cc => $"may_aggravate_{cc}")
-                .ToList();
-            warnings.AddRange(conditionWarnings);
+            // User selected "None" - show condition warnings as informational
+            if (product.ConditionConcerns.Any())
+            {
+                var conditionWarnings = product.ConditionConcerns
+                    .Select(cc => $"may_trigger_{cc}")  // Changed from "may_aggravate" to "may_trigger"
+                    .ToList();
+                warnings.AddRange(conditionWarnings);
+            }
         }
 
         explanation["warnings"] = warnings;
