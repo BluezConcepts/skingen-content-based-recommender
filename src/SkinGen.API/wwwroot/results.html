@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkinGen - Your Recommendations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="results-page">
     <div class="container">
         <div class="results-header">
             <button class="btn-back" onclick="window.location.href='index.html'">
-                ← New Search
+                <i class="bi bi-arrow-left"></i> New Search
             </button>
             <div id="resultsStats"></div>
         </div>
 
         <div id="resultsGrid" class="results-grid">
-            <div class="loading">Finding your perfect products...</div>
+            <div class="loading">
+                <i class="bi bi-hourglass-split"></i> Finding your perfect products...
+            </div>
         </div>
     </div>
 

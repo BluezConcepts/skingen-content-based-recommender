@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkinGen - Find Your Perfect Product</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <div class="container">
@@ -15,58 +16,92 @@
 
         <div class="form-card">
             <form id="queryForm">
+                <!-- SECTION 1: WHAT ARE YOU LOOKING FOR? -->
+                <div class="section-header">
+                    <h2>1. What are you looking for?</h2>
+                    <span class="required-badge">Required</span>
+                </div>
+
                 <!-- Product Type -->
                 <div class="form-group">
-                    <label class="form-label">What product are you looking for?</label>
+                    <label class="form-label">Product Type</label>
                     <select id="productType" class="form-select" required>
                         <option value="">Select product type...</option>
                         <option value="serum">Serum</option>
-                        <option value="general moisturizer">Moisturizer</option>
-                        <option value="face cleanser">Cleanser</option>
+                        <option value="general moisturizer">General Moisturizer</option>
+                        <option value="day moisturizer">Day Moisturizer</option>
+                        <option value="night moisturizer">Night Moisturizer</option>
+                        <option value="face cleanser">Face Cleanser</option>
                         <option value="toner">Toner</option>
+                        <option value="exfoliator">Exfoliator</option>
+                        <option value="facial treatment">Facial Treatment</option>
                         <option value="sunscreen">Sunscreen</option>
                         <option value="essence">Essence</option>
                     </select>
                 </div>
 
-                <!-- Skin Concerns -->
+                <!-- Primary Skin Concerns -->
                 <div class="form-group">
-                    <label class="form-label">What are your skin concerns? *</label>
+                    <label class="form-label">Primary Skin Concerns <span class="required">*</span></label>
                     <div class="pill-group" id="concernsGroup">
                         <label class="pill">
-                            <input type="checkbox" value="hydrating">
-                            <span>Hydrating</span>
+                            <input type="checkbox" value="brightening">
+                            <span>Brightening</span>
                         </label>
                         <label class="pill">
                             <input type="checkbox" value="anti_aging">
                             <span>Anti-Aging</span>
                         </label>
                         <label class="pill">
-                            <input type="checkbox" value="brightening">
-                            <span>Brightening</span>
+                            <input type="checkbox" value="redness_reducing">
+                            <span>Redness Reducing</span>
+                        </label>
+                        <label class="pill">
+                            <input type="checkbox" value="good_for_oily_skin">
+                            <span>Good for Oily Skin</span>
+                        </label>
+                        <label class="pill">
+                            <input type="checkbox" value="reduces_large_pores">
+                            <span>Reduces Large Pores</span>
                         </label>
                         <label class="pill">
                             <input type="checkbox" value="acne_fighting">
                             <span>Acne Fighting</span>
                         </label>
                         <label class="pill">
-                            <input type="checkbox" value="redness_reducing">
-                            <span>Redness Reducing</span>
+                            <input type="checkbox" value="hydrating">
+                            <span>Hydrating</span>
                         </label>
                         <label class="pill">
                             <input type="checkbox" value="dark_spots">
                             <span>Dark Spots</span>
                         </label>
+                        <label class="pill">
+                            <input type="checkbox" value="scar_healing">
+                            <span>Scar Healing</span>
+                        </label>
+                        <label class="pill">
+                            <input type="checkbox" value="skin_texture">
+                            <span>Skin Texture</span>
+                        </label>
                     </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- SECTION 2: ABOUT YOUR SKIN -->
+                <div class="section-header">
+                    <h2>2. About Your Skin</h2>
+                    <span class="optional-badge">Optional</span>
                 </div>
 
                 <!-- Skin Type -->
                 <div class="form-group">
-                    <label class="form-label">Your skin type (optional)</label>
+                    <label class="form-label">Skin Type</label>
                     <div class="pill-group">
                         <label class="pill radio">
-                            <input type="radio" name="skinType" value="" checked>
-                            <span>Skip</span>
+                            <input type="radio" name="skinType" value="normal_skin">
+                            <span>Normal</span>
                         </label>
                         <label class="pill radio">
                             <input type="radio" name="skinType" value="dry_skin">
@@ -87,50 +122,92 @@
                     </div>
                 </div>
 
-                <!-- Must-Have Ingredients -->
+                <!-- Skin Conditions -->
                 <div class="form-group">
-                    <label class="form-label">Must-have ingredients (optional)</label>
+                    <label class="form-label">Skin Conditions</label>
+                    <div class="pill-group">
+                        <label class="pill radio">
+                            <input type="radio" name="skinCondition" value="" checked>
+                            <span>None</span>
+                        </label>
+                        <label class="pill radio">
+                            <input type="radio" name="skinCondition" value="rosacea">
+                            <span>Rosacea</span>
+                        </label>
+                        <label class="pill radio">
+                            <input type="radio" name="skinCondition" value="eczema">
+                            <span>Eczema</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- SECTION 3: INGREDIENT PREFERENCES -->
+                <div class="section-header">
+                    <h2>3. Ingredient Preferences</h2>
+                    <span class="optional-badge">Optional</span>
+                </div>
+
+                <!-- I WANT products with -->
+                <div class="form-group">
+                    <label class="form-label">I WANT products with:</label>
+                    <p class="form-hint">Common Ingredient Groups</p>
                     <div class="pill-group" id="ingredientsGroup">
                         <label class="pill">
                             <input type="checkbox" value="vitamin_c">
-                            <span>Vitamin C</span>
+                            <span>Vitamin C (all forms)</span>
                         </label>
                         <label class="pill">
                             <input type="checkbox" value="hyaluronic_acid">
                             <span>Hyaluronic Acid</span>
                         </label>
                         <label class="pill">
+                            <input type="checkbox" value="niacinamide">
+                            <span>Niacinamide</span>
+                        </label>
+                        <label class="pill">
                             <input type="checkbox" value="retinoids">
-                            <span>Retinoids</span>
+                            <span>Retinoids (Retinol, Retinal, etc)</span>
                         </label>
                         <label class="pill">
                             <input type="checkbox" value="peptides">
                             <span>Peptides</span>
                         </label>
                         <label class="pill">
-                            <input type="checkbox" value="niacinamide">
-                            <span>Niacinamide</span>
+                            <input type="checkbox" value="aha">
+                            <span>AHA (Glycolic, Lactic Acid, etc)</span>
+                        </label>
+                        <label class="pill">
+                            <input type="checkbox" value="bha">
+                            <span>BHA (Salicylic Acid)</span>
                         </label>
                         <label class="pill">
                             <input type="checkbox" value="ceramides">
                             <span>Ceramides</span>
                         </label>
                     </div>
+
+                    <p class="form-hint" style="margin-top: 16px;">OR type specific ingredients (exact INCI names):</p>
+                    <input type="text" id="specificIngredients" class="form-input" placeholder="e.g., centella asiatica, azelaic acid">
                 </div>
 
-                <!-- Avoid -->
+                <!-- I WANT TO AVOID -->
                 <div class="form-group">
-                    <label class="form-label">Ingredients to avoid (optional)</label>
+                    <label class="form-label">I WANT TO AVOID:</label>
+                    <p class="form-hint">Common Irritants</p>
                     <div class="pill-group" id="blockedGroup">
                         <label class="pill">
                             <input type="checkbox" value="fragrance">
-                            <span>Fragrance</span>
+                            <span>Fragrance (all types)</span>
                         </label>
                         <label class="pill">
                             <input type="checkbox" value="alcohol">
-                            <span>Alcohol</span>
+                            <span>Drying Alcohol</span>
                         </label>
                     </div>
+
+                    <p class="form-hint" style="margin-top: 16px;">Specific Allergies:</p>
                     <input type="text" id="allergies" class="form-input" placeholder="e.g., niacinamide, salicylic acid">
                 </div>
 

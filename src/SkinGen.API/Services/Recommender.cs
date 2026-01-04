@@ -242,43 +242,55 @@ public class Recommender
         explanation["all_claims"] = product.PositiveConcerns;
         explanation["warnings"] = product.NegativeConcerns;
 
-        var verifiedIngredients = new Dictionary<string, List<string>>();
+        // Verified ingredients by concern with proper categorization
+        var verifiedIngredients = new Dictionary<string, Dictionary<string, List<string>>>();
         
-        var concernToLists = new Dictionary<string, string[]>
+        var concernToCategories = new Dictionary<string, string[]>
         {
-            { "hydrating", new[] { "Humectant", "Emollient", "Occlusive" } },
-            { "anti_aging", new[] { "Retinoid", "Peptide", "Antioxidant" } },
-            { "brightening", new[] { "Exfoliant", "Antioxidant" } },
-            { "dark_spots", new[] { "Exfoliant", "Antioxidant" } }
+            { "hydrating", new[] { "humectant", "emollient", "occlusive" } },
+            { "anti_aging", new[] { "retinoid", "peptide", "antioxidant" } },
+            { "brightening", new[] { "exfoliant", "antioxidant" } },
+            { "dark_spots", new[] { "exfoliant", "antioxidant" } },
+            { "redness_reducing", new[] { "antioxidant", "plant_extract" } },
+            { "acne_fighting", new[] { "exfoliant", "plant_extract" } },
+            { "good_for_oily_skin", new[] { "exfoliant", "plant_extract" } },
+            { "reduces_large_pores", new[] { "exfoliant", "antioxidant" } },
+            { "scar_healing", new[] { "peptide", "antioxidant" } },
+            { "skin_texture", new[] { "exfoliant", "peptide" } }
         };
 
         foreach (var concern in query.Concerns)
         {
-            if (concernToLists.ContainsKey(concern))
+            if (!concernToCategories.ContainsKey(concern)) continue;
+            
+            var categoryDict = new Dictionary<string, List<string>>();
+            
+            foreach (var category in concernToCategories[concern])
             {
-                var ingredients = new List<string>();
-                
-                foreach (var listType in concernToLists[concern])
+                var ingredients = category switch
                 {
-                    var list = listType switch
-                    {
-                        "Retinoid" => product.RetinoidList,
-                        "Peptide" => product.PeptideList,
-                        "Antioxidant" => product.AntioxidantList,
-                        "Humectant" => product.HumectantList,
-                        "Emollient" => product.EmollientList,
-                        "Occlusive" => product.OcclusiveList,
-                        "Exfoliant" => product.ExfoliantList,
-                        _ => new List<string>()
-                    };
-                    
-                    ingredients.AddRange(list.Take(3));
-                }
+                    "retinoid" => product.RetinoidList.Take(3).ToList(),
+                    "peptide" => product.PeptideList.Take(3).ToList(),
+                    "antioxidant" => product.AntioxidantList.Take(3).ToList(),
+                    "humectant" => product.HumectantList.Take(3).ToList(),
+                    "emollient" => product.EmollientList.Take(3).ToList(),
+                    "occlusive" => product.OcclusiveList.Take(3).ToList(),
+                    "exfoliant" => product.ExfoliantList.Take(3).ToList(),
+                    "plant_extract" => product.PlantExtractList.Take(3).ToList(),
+                    _ => new List<string>()
+                };
                 
                 if (ingredients.Any())
                 {
-                    verifiedIngredients[concern] = ingredients.Distinct().Take(5).ToList();
+                    // Capitalize category name
+                    var categoryName = char.ToUpper(category[0]) + category.Substring(1);
+                    categoryDict[categoryName] = ingredients;
                 }
+            }
+            
+            if (categoryDict.Any())
+            {
+                verifiedIngredients[concern] = categoryDict;
             }
         }
 
