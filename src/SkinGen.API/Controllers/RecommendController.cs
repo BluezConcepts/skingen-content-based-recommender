@@ -10,11 +10,13 @@ public class RecommendController : ControllerBase
 {
     private readonly Recommender _recommender;
 
-    public RecommendController()
+    // ✅ Correct: ASP.NET injects the singleton Recommender
+    public RecommendController(Recommender recommender)
     {
-        _recommender = new Recommender();
+        _recommender = recommender;
     }
 
+    // POST api/recommend
     [HttpPost]
     public ActionResult<RecommendationResponse> GetRecommendations(
         [FromBody] UserQuery query,
@@ -31,16 +33,17 @@ public class RecommendController : ControllerBase
         }
     }
 
+    // GET api/recommend/product-types
     [HttpGet("product-types")]
     public ActionResult<string[]> GetProductTypes()
     {
-        return Ok(new[] 
-        { 
-            "Serum", 
+        return Ok(new[]
+        {
+            "Serum",
             "General Moisturizer",
             "Day Moisturizer",
             "Night Moisturizer",
-            "Face Cleanser", 
+            "Face Cleanser",
             "Toner",
             "Exfoliator",
             "Facial Treatment",
@@ -49,13 +52,14 @@ public class RecommendController : ControllerBase
         });
     }
 
+    // GET api/recommend/concerns
     [HttpGet("concerns")]
     public ActionResult<string[]> GetConcerns()
     {
-        return Ok(new[] 
-        { 
-            "hydrating", 
-            "anti_aging", 
+        return Ok(new[]
+        {
+            "hydrating",
+            "anti_aging",
             "brightening",
             "acne_fighting",
             "redness_reducing",

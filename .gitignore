@@ -1,40 +1,14 @@
-# # Python
-# __pycache__/
-# *.pyc
-# *.pyo
-# *.pyd
-# .env
-# .venv
-# .ipynb_checkpoints/
+# .NET build outputs
+bin/
+obj/
+publish/
 
-# # Jupyter
-# .ipynb_checkpoints/
+# VS / VS Code
+.vscode/
+*.user
+*.suo
+*.cache
 
-# # Data
-# data/raw/
-# data/interim/
-# data/processed/
-
-# # OS
-# .DS_Store
-# Thumbs.db
-
-# # C# ignores
-# bin/
-# obj/
-# *.user
-# *.suo
-# .vs/
-# .vscode/
-# *.dll
-# *.exe
-# *.pdb
-# *.cache
-# *.log
-
-# # Data files (don't commit large datasets)
-# data/raw/*.csv
-# data/raw/*.parquet
-
-# # Keep cleaned data
-# !data/cleaned/*.parquet
+# OS
+.DS_Store
+Thumbs.db

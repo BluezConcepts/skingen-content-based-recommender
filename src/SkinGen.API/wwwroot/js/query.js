@@ -1,4 +1,7 @@
-const API_URL = 'http://localhost:5166/api/recommend';
+const API_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:5166/api/recommend'
+    : 'https://skingen-elias-hwahbbhwbbhca9a9.francecentral-01.azurewebsites.net/api/recommend';
 
 // Store tags
 let specificIngredientsTags = [];
