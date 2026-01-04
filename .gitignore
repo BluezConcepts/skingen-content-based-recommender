@@ -5,6 +5,7 @@
 # *.pyd
 # .env
 # .venv
+# .ipynb_checkpoints/
 
 # # Jupyter
 # .ipynb_checkpoints/
@@ -17,3 +18,23 @@
 # # OS
 # .DS_Store
 # Thumbs.db
+
+# # C# ignores
+# bin/
+# obj/
+# *.user
+# *.suo
+# .vs/
+# .vscode/
+# *.dll
+# *.exe
+# *.pdb
+# *.cache
+# *.log
+
+# # Data files (don't commit large datasets)
+# data/raw/*.csv
+# data/raw/*.parquet
+
+# # Keep cleaned data
+# !data/cleaned/*.parquet
