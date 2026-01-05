@@ -156,23 +156,28 @@ Binary presence features outperform count-based features.
 
 ---
 
-### 4.3 Safety-Aware Scoring Strategy
+## 4.3 Safety-Aware Scoring Strategy
 
-Instead of strict exclusion:
+SkinGen uses a safety-aware scoring strategy that prioritizes transparency over hard exclusion.
+Instead of removing products by default, potential risks are reflected in the ranking score
+and clearly communicated to the user.
 
-#### Hard Filters
-Applied only for:
-- medical contraindications
-- explicit user exclusions
-- regulatory restrictions
+#### Hard Filters  
+- medical contraindications  ( if rosacea or eczema is selected)
+- explicit user-defined exclusions
 
-#### Soft Penalties
-Applied for:
-- skin-type conflicts (drying, irritating)
-- condition risks (eczema, rosacea)
+Products failing a hard filter are fully removed from the recommendation set.
 
-Penalties are **cumulative**, ensuring products with multiple conflicts rank lower
-without disappearing entirely.
+#### Soft Penalties  
+Applied as **ranking penalties**, not exclusions, for:
+- skin-type conflicts (e.g. drying, irritating)  
+- potential condition-related risks (e.g. eczema, rosacea triggers)  
+
+Penalties are **cumulative**, ensuring that products with multiple conflicts
+rank progressively lower without disappearing entirely.
+
+Even when no condition is selected, products with known sensitivity risks
+surface **informational warnings** to improve decision-making.
 
 **Design Principle:**  
 > Inform the user, don’t decide for them.
