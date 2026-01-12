@@ -10,7 +10,7 @@ public class RecommendController : ControllerBase
 {
     private readonly Recommender _recommender;
 
-    // ✅ Correct: ASP.NET injects the singleton Recommender
+    // Correct: ASP.NET injects the singleton Recommender
     public RecommendController(Recommender recommender)
     {
         _recommender = recommender;
@@ -58,13 +58,16 @@ public class RecommendController : ControllerBase
     {
         return Ok(new[]
         {
-            "hydrating",
-            "anti_aging",
             "brightening",
-            "acne_fighting",
+            "anti_aging",
             "redness_reducing",
+            "good_for_oily_skin",
+            "reduces_large_pores",
+            "acne_fighting",
+            "hydrating",
             "dark_spots",
-            "good_for_oily_skin"
+            "scar_healing",
+            "skin_texture"
         });
     }
 }

@@ -4,7 +4,7 @@ namespace SkinGen.API.Models;
 
 public class Product
 {
-    // Basic info (lowercase to match parquet)
+    // Basic info (lowercase to match column names in data source)
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
     

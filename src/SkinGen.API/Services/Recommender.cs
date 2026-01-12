@@ -32,7 +32,7 @@ public class Recommender
             var json = File.ReadAllText(jsonPath);
             _products = JsonSerializer.Deserialize<List<Product>>(json) ?? new();
             
-            Console.WriteLine($"✓ Loaded {_products.Count} products from JSON");
+            Console.WriteLine($"Loaded {_products.Count} products from JSON");
         }
         catch (Exception ex)
         {
@@ -65,8 +65,8 @@ public class Recommender
         var scoredProducts = CalculateScores(candidates, query);
         
         var topN = scoredProducts
-            .OrderByDescending(p => p.Score)
-            .Take(n)
+            .OrderByDescending(p => p.Score)// Sort by score (highest first)
+            .Take(n)// Take top 10 (or user-specified n)
             .Select((p, index) => new Recommendation
             {
                 Product = p.Product,
@@ -195,24 +195,27 @@ public class Recommender
     }
 
     private double CalculateCosineSimilarity(Product product, UserQuery query)
-    {
+    {   // User wants: ["hydrating", "anti_aging", "brightening"]
         var userConcerns = new HashSet<string>(query.Concerns);
+        // Product claims: ["hydrating", "brightening", "firming"]
         var productConcerns = new HashSet<string>(product.PositiveConcerns);
-        
+        // How many overlap? → ["hydrating", "brightening"] = 2
         var intersection = userConcerns.Intersect(productConcerns).Count();
         
         if (intersection == 0) return 0;
-        
-        var userMagnitude = Math.Sqrt(userConcerns.Count);
-        var productMagnitude = Math.Sqrt(productConcerns.Count);
+          // Cosine similarity formula:
+        // score = intersection / (√|user| × √|product|)
+        // score = 2 / (√3 × √3) = 2 / 3 = 0.667
+        var userMagnitude = Math.Sqrt(userConcerns.Count);// √3
+        var productMagnitude = Math.Sqrt(productConcerns.Count);// √3
         
         return intersection / (userMagnitude * productMagnitude);
     }
 
     private double ApplySoftPenalties(double score, Product product, UserQuery query)
-    {
+    {    // Only apply if user selected a skin type
         if (string.IsNullOrEmpty(query.SkinType)) return score;
-
+        // Define penalty rules by skin type
         var penaltyRules = new Dictionary<string, string[]>
         {
             { "dry_skin", new[] { "drying" } },
@@ -220,13 +223,18 @@ public class Recommender
             { "sensitive_skin", new[] { "irritating", "drying" } },
             { "combination_skin", new[] { "drying", "may_worsen_oily_skin" } }
         };
-
+        
         if (!penaltyRules.ContainsKey(query.SkinType)) return score;
-
+        
         var penalties = penaltyRules[query.SkinType];
+        // Count how many negative concerns match the penalty rules
         int penaltyCount = product.NegativeConcerns.Count(nc => penalties.Contains(nc));
-
-        return score * Math.Pow(PenaltyValue, penaltyCount);
+        // Apply penalty: score x (0.9)^penaltyCount
+            // Example: 
+            // - 0 penalties -> score × 1.0 = no change
+            // - 1 penalty -> score × 0.9 = 10% reduction
+            // - 2 penalties -> score × 0.81 = 19% reduction
+        return score * Math.Pow(PenaltyValue, penaltyCount); // PenaltyValue = 0.9
     }
 
     private Dictionary<string, object> GenerateExplanation(Product product, UserQuery query)

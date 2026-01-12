@@ -268,7 +268,7 @@ body {
     background: var(--purple);
     border-color: var(--purple);
     color: white;
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
     transform: translateY(-2px);
 }
 
@@ -286,22 +286,21 @@ body {
 .btn-primary {
     width: 100%;
     padding: 20px;
-    background: linear-gradient(135deg, var(--purple));
+    background: var(--purple);
     border: none;
     border-radius: 16px;
     font-size: 1.3rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: white;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+    transform: translateY(-2px);
 }
 
 .btn-primary:disabled {
@@ -384,10 +383,10 @@ body {
     color: white;
 }
 
-.btn-back:hover {
+/* .btn-back:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: var(--purple);
-}
+} */
 
 #resultsStats {
     font-size: 1.3rem;
@@ -405,10 +404,10 @@ body {
     transition: all 0.4s;
 }
 
-.product-card:hover {
+/* .product-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 24px 70px rgba(139, 92, 246, 0.4);
-}
+} */
 
 .product-rank {
     position: absolute;
@@ -423,7 +422,7 @@ body {
     justify-content: center;
     font-weight: 900;
     font-size: 1.6rem;
-    box-shadow: 0 8px 25px rgba(116, 74, 231, 0.5);
+    /* box-shadow: 0 8px 25px rgba(116, 74, 231, 0.5); */
 }
 
 .product-score-section {
@@ -433,7 +432,7 @@ body {
 .product-score {
     font-size: 6rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--purple), var(--pink));
+    background: var(--purple);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
