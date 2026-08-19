@@ -1,7 +1,7 @@
 # .NET build outputs
-bin/
-obj/
-publish/
+# bin/
+# obj/
+# publish/
 
 # VS / VS Code
 .vscode/

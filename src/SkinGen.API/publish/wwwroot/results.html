@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinGen - Your Recommendations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="results-page">
+    <!-- Animated Background -->
+    <div class="gradient-bg">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+        <div class="gradient-blob blob-4"></div>
+    </div>
+
+    <div class="container">
+        <div class="results-header">
+            <button class="btn-back" onclick="window.location.href='index.html'">
+                <i class="bi bi-arrow-left"></i> New Search
+            </button>
+            <div id="resultsStats"></div>
+        </div>
+
+        <div id="resultsGrid" class="results-grid">
+            <div class="loading">
+                <i class="bi bi-hourglass-split"></i> Finding your perfect products...
+            </div>
+        </div>
+    </div>
+
+    <script src="js/results.js"></script>
+</body>
+</html>
